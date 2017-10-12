@@ -6,7 +6,12 @@ const routes = require('./controllers/routes');
 // middleware / static files
 app.set('view engine', 'hbs');
 app.use(express.static(`${__dirname}/public`));
+
+// register partials and helpers
 hbs.registerPartials(`${__dirname}/views/partials`);
+hbs.registerHelper('year', function() {
+  return new Date().getFullYear();
+});
 
 // routes
 routes(app);

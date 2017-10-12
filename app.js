@@ -1,12 +1,14 @@
 const express = require('express');
+const hbs = require('hbs');
 const app = express();
 
 // middleware / static files
+app.set('view engine', 'hbs');
 app.use(express.static(`${__dirname}/public`));
 
 // routes
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.render('home.hbs');
 });
 
 // port
